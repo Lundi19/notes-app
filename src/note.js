@@ -14,5 +14,4 @@ class Note {
     return this.text.slice(0, 20)
   }
 
-  // displayAll()
 };
