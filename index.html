@@ -18,7 +18,7 @@
       <div class="row">
         <div class="col-md-12">
 
-          <form>
+          <form id="add-note">
             <div class="form-group">
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="6" placeholder="Enter a note... Emojis are welcome !"></textarea>
             </div>
@@ -32,7 +32,7 @@
       <div class="col-md-12">
         <h1 class="text-center">Click on the link next to a note to 👀 it's full content!   </h1>
       </div>
-
+      <ul id="note-list"> </ul>
       <br>
       <div class="row">
       <div class="col-md-4">
@@ -91,9 +91,10 @@
 
     <div>
 
-  </div>
-  <script src="src/note.js"></script>
-  <script src="spec/note_spec.js"></script>
+    </div>
+    <script src="src/note.js"></script>
+    <script src="spec/testLibrary.js"></script>
+    <script src="spec/note_spec.js"></script>
   <script src="src/interface.js"></script>
   <script src="src/note_manager.js"></script>
   </body>
