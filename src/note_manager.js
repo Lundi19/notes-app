@@ -1,0 +1,3 @@
+// class noteManager {
+//   constructor 
+// }
