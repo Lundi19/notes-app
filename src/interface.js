@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function() {
-const noteListDiv = document.querySelector(".col-md-4");
+const noteListDiv = document.querySelector(".notes-list");
 
 
   // ADDS NEW NOTE FROM USER INPUT //
@@ -22,8 +22,8 @@ const noteListDiv = document.querySelector(".col-md-4");
   // CREATE A NEW NOTE //
 
   function createNote(newNote) {
-    const div = document.createElement("col-md-4");
-    div.classList.add("col-md-4")
+    const div = document.createElement("div");
+    div.classList.add("notes-list")
     div.setAttribute("data-id", "newNote.id")
     div.innerHTML = `
     <h3>${newNote.text}</h3>
@@ -74,4 +74,4 @@ const noteListDiv = document.querySelector(".col-md-4");
       return response.emojified_text
   }
 
-});
+})
