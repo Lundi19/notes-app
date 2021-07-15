@@ -1,0 +1,60 @@
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
+
+a { color: inherit; } 
+
+  
+  @media (min-width: 768px){
+    .container .row .col-md-3:not(:first-child){
+        border-left: 1px solid #ccc;
+    }
+    @font-face {
+      font-family: Roboto;;
+      src: url();
+    }
+
+    h3 {
+      width: 300px;
+      border: 1px solid rgb(0, 0, 0);
+      border-radius: 5px;
+      padding: 50px;
+      margin: 20px;
+      text-align: center;
+      background-image: linear-gradient( 67.2deg,  rgba(37,208,199,1) -7.5%, rgba(165,90,240,1) 62.7% );
+      padding: 2rem;
+    }
+
+    .text-center {
+      color: white;
+    }
+      
+
+    .notes-list{
+      margin: auto;
+      width: 35%;
+      padding: 10px;
+    }
+
+    body {
+      line-height: 1.5;
+      font-weight: 300;
+      background-color: #4158D0;
+      background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+      font-family: Roboto;
+      height:100vh;
+      
+    }
+
+    .navbar navbar-light bg-dark {
+      background-image: linear-gradient(#22c1c3, #fdbb2d);
+      font-family: Roboto;
+    }
+  }

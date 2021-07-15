@@ -10,7 +10,7 @@ class Note {
     return this.text
   }
 
-  firstTwenty() {
+  firstTwenty(text) {
     return this.text.slice(0, 20)
   }
 
