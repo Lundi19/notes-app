@@ -6,20 +6,39 @@ window.onload = displayNotes();
 
 
 
-  // ADDS NEW NOTE FROM USER INPUT //
+  // // ADDS NEW NOTE FROM USER INPUT //
+  // let submitText = document.querySelector('#add-note');
+  // submitText.addEventListener('submit', (event) => {
+  //   event.preventDefault();
+  //   let inputText = document.querySelector("#exampleFormControlTextarea1").value;
+  //   let notes = getDataFromStorage();
+  //   let newNote = new Note(inputText);
+  //   // Push newNote into notes array // 
+  //   notes.push(newNote);
+  //   createNote(newNote);
+  //   // Save to storage //
+  //   localStorage.setItem("notes", JSON.stringify(notes));
+  //   inputText.value = "";
+  // })
+
+ // ADDS NEW NOTE FROM USER INPUT //
   let submitText = document.querySelector('#add-note');
   submitText.addEventListener('submit', (event) => {
     event.preventDefault();
     let inputText = document.querySelector("#exampleFormControlTextarea1").value;
+    document.querySelector("#exampleFormControlTextarea1").value = "";
     let notes = getDataFromStorage();
-    let newNote = new Note(inputText);
+    useEmoji(inputText).then((noteEmoji) => {
+    let newNote = new Note(noteEmoji);
     // Push newNote into notes array // 
     notes.push(newNote);
     createNote(newNote);
     // Save to storage //
     localStorage.setItem("notes", JSON.stringify(notes));
     inputText.value = "";
+    })
   })
+
 
   // CREATE A NEW NOTE //
 
