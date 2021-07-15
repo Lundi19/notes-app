@@ -4,24 +4,35 @@ const noteListDiv = document.querySelector(".notes-list");
 
 window.onload = displayNotes();
 
+
+//CLEAR NOTE BUTTON
+
     // 1. Create the button
     var button = document.createElement("button");
     button.classList.add("button-clear");
     button.innerHTML = "<h1>Delete Notes</h1>";
   
-    // 2. Append somewhere
+    // 2. Append
     localStorage.clear();
     var clearButton = document.querySelector('#clear-button');
     clearButton.appendChild(button);
   
     // 3. Add event handler
     button.addEventListener ("click", function() {
-      localStorage.clear();
+    localStorage.clear(); {
+    hideNote();
+    }
     });
 
+    // Hides element
+  function hideNote() {
+    var el = document.getElementById('note-text'); 
+    el.setAttribute('style', 'display:none !important');
+    }
+
  // ADDS NEW NOTE FROM USER INPUT //
-  let submitText = document.querySelector('#add-note');
-  submitText.addEventListener('submit', (event) => {
+    let submitText = document.querySelector('#add-note');
+    submitText.addEventListener('submit', (event) => {
     event.preventDefault();
     let inputText = document.querySelector("#exampleFormControlTextarea1").value;
     document.querySelector("#exampleFormControlTextarea1").value = "";
@@ -46,7 +57,7 @@ window.onload = displayNotes();
     div.classList.add("notes-list")
     div.setAttribute("data-id", "newNote.id")
     div.innerHTML = `
-    <h3><a href="#${notes.id}">${newNote.text.slice(0,20)}</a></h3>
+    <h3 id="note-text"><a href="#${notes.id}">${newNote.text.slice(0,20)}</a></h3>
     <span hidden=${newNote.id}></span>
     `;
     noteListDiv.appendChild(div);
@@ -54,7 +65,7 @@ window.onload = displayNotes();
 
   // LOCAL STORAGE
 
-  function getDataFromStorage() {
+    function getDataFromStorage() {
     return localStorage.getItem("notes") ? JSON.parse(localStorage.getItem("notes")) : [];
   }
 
