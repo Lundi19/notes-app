@@ -1,3 +1,17 @@
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
+
+a { color: inherit; } 
+
+  
   @media (min-width: 768px){
     .container .row .col-md-3:not(:first-child){
         border-left: 1px solid #ccc;

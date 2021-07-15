@@ -32,7 +32,7 @@ window.onload = displayNotes();
     let newNote = new Note(noteEmoji);
     // Push newNote into notes array // 
     notes.push(newNote);
-    createNote(newNote);
+    createNote(newNote, notes);
     // Save to storage //
     localStorage.setItem("notes", JSON.stringify(notes));
     inputText.value = "";
@@ -42,12 +42,13 @@ window.onload = displayNotes();
 
   // CREATE A NEW NOTE //
 
-  function createNote(newNote) {
+  function createNote(newNote, notes) {
     const div = document.createElement("div");
     div.classList.add("notes-list")
     div.setAttribute("data-id", "newNote.id")
     div.innerHTML = `
-    <h3>${newNote.text.slice(0,20)}</h3></span>
+    <h3><a href= "#${newNote.id}">${newNote.text.slice(0,20)}</a></h3>
+    <span hidden=${newNote.id}></span>
     `;
       noteListDiv.appendChild(div);
   }
@@ -90,5 +91,31 @@ window.onload = displayNotes();
       let response = await findEmoji
       return response.emojified_text
   }
+
+
+  // View the full contents of a note
+
+  makeUrlChangeShowNoteForCurrentPage();
+
+
+  function makeUrlChangeShowNoteForCurrentPage() {
+    window.addEventListener("hashchange", showNoteForCurrentPage);
+  };
+
+  function showNoteForCurrentPage() {
+    showNote(getNoteFromUrl(window.location));
+  };
+
+  function showNote(id) {
+    let notes = getDataFromStorage();
+    let note = notes.find(note => note.id === id);
+    document
+      .getElementById("notes-list")
+      .innerHTML = note;
+  };
+
+  function getNoteFromUrl(location) {
+    return location.hash.split("#")[1];
+  };
 
 })
