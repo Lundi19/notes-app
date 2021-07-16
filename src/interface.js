@@ -26,8 +26,12 @@ window.onload = displayNotes();
 
     // Hides element
   function hideNote() {
-    var el = document.getElementById('note-text'); 
-    el.setAttribute('style', 'display:none !important');
+    // var el = document.getElementById('note-text'); 
+    // el.setAttribute('style', 'display:none !important');
+    // }
+
+    while (noteListDiv.firstChild)
+      noteListDiv.removeChild(noteListDiv.firstChild);
     }
 
  // ADDS NEW NOTE FROM USER INPUT //
