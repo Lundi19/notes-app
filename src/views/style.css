@@ -1,28 +1,43 @@
-a:link { text-decoration: none; }
-
-
-a:visited { text-decoration: none; }
-
-
-a:hover { text-decoration: none; }
-
-
-a:active { text-decoration: none; }
-
-a { color: inherit; } 
-
-  
-  @media (min-width: 768px){
-    .container .row .col-md-3:not(:first-child){
-        border-left: 1px solid #ccc;
+    @media (min-width: 768px){
+      .container .row .col-md-3:not(:first-child){
+      border-left: 1px solid #ccc;
     }
+    
     @font-face {
-      font-family: Roboto;;
+      font-family: Roboto;
       src: url();
+    }    
+    
+    a:link { 
+      text-decoration: none;
+      color: white; 
     }
+
+
+    a:visited { 
+      text-decoration: none;
+      color: white;   
+    }
+
+
+    a:hover { 
+      text-decoration: none; 
+      color: white; 
+    }
+
+
+    a:active { 
+      text-decoration: none; 
+      color: white; 
+    }
+
+    a { 
+      color: inherit; 
+      color: white; 
+    } 
 
     h3 {
-      width: 300px;
+      width: 450px;
       border: 1px solid rgb(0, 0, 0);
       border-radius: 5px;
       padding: 50px;
@@ -32,6 +47,31 @@ a { color: inherit; }
       padding: 2rem;
     }
 
+    #clear-button {
+      position: relative;
+      text-align:center;
+      width:50px;
+      left: 20px;
+      width:200px;
+      text-align:left;
+      margin:auto;
+      margin:auto auto auto 0;
+      margin:auto 0 auto auto;
+    }
+
+    #delete-warning {
+      text-align:center;
+    }
+
+    .button-clear {
+      top: 520px;
+      position: fixed;
+      background-color:red;
+      border: 1px solid rgb(0, 0, 0);
+      border-radius: 5px;
+    }
+
+    
     .text-center {
       color: white;
     }

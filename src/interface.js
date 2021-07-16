@@ -5,25 +5,34 @@ const noteListDiv = document.querySelector(".notes-list");
 window.onload = displayNotes();
 
 
+//CLEAR NOTE BUTTON
 
-  // // ADDS NEW NOTE FROM USER INPUT //
-  // let submitText = document.querySelector('#add-note');
-  // submitText.addEventListener('submit', (event) => {
-  //   event.preventDefault();
-  //   let inputText = document.querySelector("#exampleFormControlTextarea1").value;
-  //   let notes = getDataFromStorage();
-  //   let newNote = new Note(inputText);
-  //   // Push newNote into notes array // 
-  //   notes.push(newNote);
-  //   createNote(newNote);
-  //   // Save to storage //
-  //   localStorage.setItem("notes", JSON.stringify(notes));
-  //   inputText.value = "";
-  // })
+    // 1. Create the button
+    var button = document.createElement("button");
+    button.classList.add("button-clear");
+    button.innerHTML = "<h1>Delete Notes</h1>";
+  
+    // 2. Append
+    localStorage.clear();
+    var clearButton = document.querySelector('#clear-button');
+    clearButton.appendChild(button);
+  
+    // 3. Add event handler
+    button.addEventListener ("click", function() {
+    localStorage.clear(); {
+    hideNote();
+    }
+    });
+
+    // Hides element
+  function hideNote() {
+    var el = document.getElementById('note-text'); 
+    el.setAttribute('style', 'display:none !important');
+    }
 
  // ADDS NEW NOTE FROM USER INPUT //
-  let submitText = document.querySelector('#add-note');
-  submitText.addEventListener('submit', (event) => {
+    let submitText = document.querySelector('#add-note');
+    submitText.addEventListener('submit', (event) => {
     event.preventDefault();
     let inputText = document.querySelector("#exampleFormControlTextarea1").value;
     document.querySelector("#exampleFormControlTextarea1").value = "";
@@ -32,7 +41,7 @@ window.onload = displayNotes();
     let newNote = new Note(noteEmoji);
     // Push newNote into notes array // 
     notes.push(newNote);
-    createNote(newNote, notes);
+    createNote(newNote);
     // Save to storage //
     localStorage.setItem("notes", JSON.stringify(notes));
     inputText.value = "";
@@ -42,22 +51,22 @@ window.onload = displayNotes();
 
   // CREATE A NEW NOTE //
 
-  function createNote(newNote, notes) {
+  function createNote(newNote) {
+    let notes = getDataFromStorage();
     const div = document.createElement("div");
     div.classList.add("notes-list")
     div.setAttribute("data-id", "newNote.id")
     div.innerHTML = `
-    <h3><a href= "#${newNote.id}">${newNote.text.slice(0,20)}</a></h3>
+    <h3 id="note-text"><a href="#${notes.id}">${newNote.text.slice(0,20)}</a></h3>
     <span hidden=${newNote.id}></span>
     `;
-      noteListDiv.appendChild(div);
+    noteListDiv.appendChild(div);
   }
 
   // LOCAL STORAGE
 
-  function getDataFromStorage() {
+    function getDataFromStorage() {
     return localStorage.getItem("notes") ? JSON.parse(localStorage.getItem("notes")) : [];
-
   }
 
   // DISPLAY NOTES FROM LOCAL STORAGE
@@ -72,26 +81,8 @@ window.onload = displayNotes();
     }
     notes.forEach(item => {
       createNote(item);
-    } )
-    }
-  
-
-  // Note validation
-
-
-  // Fetch EMOJI API
-
-  async function useEmoji(string) {
-    const fetchEmoji = await fetch('https://makers-emojify.herokuapp.com/', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({'text': string})
-      });
-      let findEmoji = await fetchEmoji.json();
-      let response = await findEmoji
-      return response.emojified_text
+    })
   }
-
 
   // View the full contents of a note
 
@@ -117,5 +108,18 @@ window.onload = displayNotes();
   function getNoteFromUrl(location) {
     return location.hash.split("#")[1];
   };
+
+    // Fetch EMOJI API
+
+  async function useEmoji(string) {
+    const fetchEmoji = await fetch('https://makers-emojify.herokuapp.com/', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({'text': string})
+      });
+      let findEmoji = await fetchEmoji.json();
+      let response = await findEmoji
+      return response.emojified_text
+  }
 
 })
